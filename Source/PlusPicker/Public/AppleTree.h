@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "AppleTree.generated.h"
 
+class AApple;
+
 UCLASS()
 class PLUSPICKER_API AAppleTree : public AActor
 {
@@ -16,19 +18,22 @@ public:
 	AAppleTree();
 
 protected:
-	UPROPERTY(BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
+	TSubclassOf<AApple> AppleClassToSpawn;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
 	float MovementVector = 600;
 	
-	UPROPERTY(BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
 	float LeftAndRightEdge = 700;
 	
-	UPROPERTY(BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
 	float ChanceToChangeDirection = 0.02;
 	
-	UPROPERTY(BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
 	float AppleDropDelay = 0.6;
 	
-	UPROPERTY(BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
 	float RandomRotationCheckDelay = 0.02;
 	
 	
@@ -36,7 +41,8 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
-	
+	UWorld* _world;
+	FActorSpawnParameters* _spawnParameters;
 	
 	void TryRotateOnEdge();
 	void TryRotateRandomly();

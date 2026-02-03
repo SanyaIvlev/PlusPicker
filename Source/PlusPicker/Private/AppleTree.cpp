@@ -2,6 +2,7 @@
 
 
 #include "AppleTree.h"
+#include "Apple.h"
 
 // Sets default values
 AAppleTree::AAppleTree()
@@ -16,10 +17,12 @@ void AAppleTree::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	UWorld* world = GetWorld();
+	
+	_world = GetWorld();
+	_spawnParameters = new FActorSpawnParameters();
 	
 	FTimerHandle appleTimerHandle;
-	world->GetTimerManager().SetTimer(
+	_world->GetTimerManager().SetTimer(
 		appleTimerHandle,
 		this,
 		&AAppleTree::DropApple,
@@ -29,7 +32,7 @@ void AAppleTree::BeginPlay()
 		);
 	
 	FTimerHandle rotationTimerHandle;
-	world->GetTimerManager().SetTimer(
+	_world->GetTimerManager().SetTimer(
 		rotationTimerHandle,
 		this,
 		&AAppleTree::TryRotateRandomly,
@@ -56,6 +59,10 @@ void AAppleTree::TryRotateRandomly()
 
 void AAppleTree::DropApple()
 {
+	FTransform actorTransform = GetActorTransform();
+	
+	_world->SpawnActor<AApple>(AppleClassToSpawn, actorTransform.GetLocation(), actorTransform.GetRotation().Rotator(), FActorSpawnParameters());
+	
 	UE_LOG(LogTemp, Log, TEXT("DropApple"));
 }
 
