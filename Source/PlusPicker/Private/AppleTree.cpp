@@ -17,6 +17,7 @@ void AAppleTree::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	srand(time(0));
 	
 	_world = GetWorld();
 	_spawnParameters = new FActorSpawnParameters();
@@ -46,23 +47,54 @@ void AAppleTree::BeginPlay()
 void AAppleTree::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	Move(DeltaTime);
+	TryRotateOnEdge();
 
 }
 void AAppleTree::TryRotateOnEdge()
 {
+	FVector actorLocation = GetActorLocation();
+	
+	if (actorLocation.X < -LeftAndRightEdge)
+	{
+		MovementVector = abs(MovementVector);
+	}
+	else
+	{
+		if (actorLocation.X > LeftAndRightEdge)
+		{
+			MovementVector = -abs(MovementVector);
+		}
+	}
 	
 };
 void AAppleTree::TryRotateRandomly()
 {
+	int randomNumber = rand() % 100;
+	
+	if (randomNumber < ChanceToChangeDirection)
+	{
+		MovementVector = -MovementVector;	
+	}
+
 	UE_LOG(LogTemp, Log, TEXT("TryRotateRandomly"));
 };
 
-void AAppleTree::DropApple()
+void AAppleTree::DropApple() const
 {
 	FTransform actorTransform = GetActorTransform();
 	
 	_world->SpawnActor<AApple>(AppleClassToSpawn, actorTransform.GetLocation(), actorTransform.GetRotation().Rotator(), FActorSpawnParameters());
 	
 	UE_LOG(LogTemp, Log, TEXT("DropApple"));
+}
+
+void AAppleTree::Move(float deltaSeconds)
+{
+	FVector actorLocation = GetActorLocation();
+	
+	float xLocation = actorLocation.X + MovementVector * deltaSeconds;
+	
+	SetActorLocation(FVector(xLocation, actorLocation.Y, actorLocation.Z));
 }
 

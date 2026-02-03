@@ -46,7 +46,8 @@ private:
 	
 	void TryRotateOnEdge();
 	void TryRotateRandomly();
-	void DropApple();
+	void DropApple() const;
+	void Move(float);
 	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
