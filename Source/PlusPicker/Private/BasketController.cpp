@@ -9,20 +9,20 @@ void ABasketController::BeginPlay()
 {
 	bAutoManageActiveCameraTarget = false;
 	ABasket* pawn = GetPawn<ABasket>();
-	BasketPawn = pawn;
+	BasketPawnPtr = pawn;
 	
 	SetShowMouseCursor(true);
 	// construct widget
 	
 	
-	BasketPawn->Move(FVector(0,0,100));
-	BasketPawn->SetActorRotation(FRotator(0,0,0));
+	BasketPawnPtr->Move(FVector(0,0,100));
+	BasketPawnPtr->SetActorRotation(FRotator(0,0,0));
 	
 } 
 
 void ABasketController::Tick(float DeltaTime)
 {
-	if (BasketPawn == nullptr)
+	if (BasketPawnPtr == nullptr)
 		return;
 	
 	float xLocation, yLocation;
@@ -35,8 +35,6 @@ void ABasketController::Tick(float DeltaTime)
 	FVector mouseWorldDirection;
 	this->DeprojectScreenPositionToWorld(xLocation, yLocation, mouseWorldLocation, mouseWorldDirection);
 	
-	UE_LOG(LogTemp, Log, TEXT("x: %f"), mouseWorldLocation.X);
-	
-	FVector basketLocation = BasketPawn->GetActorLocation();
-	BasketPawn->Move(FVector(mouseWorldLocation.X, basketLocation.Y, basketLocation.Z));
+	FVector basketLocation = BasketPawnPtr->GetActorLocation();
+	BasketPawnPtr->Move(FVector(mouseWorldLocation.X, basketLocation.Y, basketLocation.Z));
 }

@@ -3,6 +3,10 @@
 
 #include "Apple.h"
 
+#include "ApplePickerGameMode.h"
+#include "GameFramework/GameMode.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 AApple::AApple()
 {
@@ -22,13 +26,19 @@ void AApple::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	FVector appleLocation = AppleMeshComponentPtr->GetComponentLocation();;
-	UE_LOG(LogTemp, Log, TEXT("Actor Location: %f"), appleLocation.Z);
+	FVector appleLocation = AppleMeshComponentPtr->GetComponentLocation();
 	
 	if (appleLocation.Z < KillAreaZ)
 	{
 		Destroy();
-		// TODO: game mode things
+		
+		AGameModeBase* gameModePtr = UGameplayStatics::GetGameMode(this);
+		AApplePickerGameMode* ApplePickerGameModePtr = Cast<AApplePickerGameMode>(gameModePtr);
+		
+		if (ApplePickerGameModePtr != nullptr)
+		{
+			ApplePickerGameModePtr->OnAppleDestroyed();
+		}
 	}
 
 }

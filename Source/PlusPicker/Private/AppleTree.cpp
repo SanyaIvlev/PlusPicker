@@ -75,8 +75,6 @@ void AAppleTree::TryRotateRandomly()
 	{
 		MovementVector = -MovementVector;	
 	}
-
-	UE_LOG(LogTemp, Log, TEXT("TryRotateRandomly"));
 };
 
 void AAppleTree::DropApple() const
@@ -84,8 +82,6 @@ void AAppleTree::DropApple() const
 	FTransform actorTransform = GetActorTransform();
 	
 	_worldPtr->SpawnActor<AApple>(AppleClassToSpawn, actorTransform.GetLocation(), actorTransform.GetRotation().Rotator(), FActorSpawnParameters());
-	
-	UE_LOG(LogTemp, Log, TEXT("DropApple"));
 }
 
 void AAppleTree::Move(float deltaSeconds)

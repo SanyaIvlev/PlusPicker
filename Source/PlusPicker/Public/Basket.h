@@ -12,15 +12,17 @@ class PLUSPICKER_API ABasket : public APawn
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Basket") 
+	TArray<UStaticMeshComponent*> BasketMeshesPtr;
+	
+	
 	// Sets default values for this pawn's properties
 	ABasket();
-	
 	
 	void Move(FVector);
 
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Basket") 
-	TArray<UStaticMeshComponent*> BasketMeshesPtr;
+	
 	
 	// UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Basket") 
 	// UBoxComponent* BasketCollisionPtr;

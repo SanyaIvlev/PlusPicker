@@ -21,7 +21,7 @@ protected:
 	
 private:
 	 UPROPERTY()
-	 ABasket* BasketPawn;
+	 ABasket* BasketPawnPtr;
 	
 	 virtual void Tick(float DeltaTime) override;
 	
