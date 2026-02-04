@@ -20,7 +20,6 @@ void AAppleTree::BeginPlay()
 	srand(time(0));
 	
 	_worldPtr = GetWorld();
-	_spawnParametersPtr = new FActorSpawnParameters();
 	
 	FTimerHandle appleTimerHandle;
 	_worldPtr->GetTimerManager().SetTimer(

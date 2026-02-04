@@ -41,8 +41,8 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
+	UPROPERTY()
 	UWorld* _worldPtr;
-	FActorSpawnParameters* _spawnParametersPtr;
 	
 	void TryRotateOnEdge();
 	void TryRotateRandomly();
