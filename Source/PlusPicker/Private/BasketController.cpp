@@ -16,6 +16,8 @@ void ABasketController::BeginPlay()
 	
 	
 	BasketPawn->Move(FVector(0,0,100));
+	BasketPawn->SetActorRotation(FRotator(0,0,0));
+	
 } 
 
 void ABasketController::Tick(float DeltaTime)
@@ -24,7 +26,11 @@ void ABasketController::Tick(float DeltaTime)
 		return;
 	
 	float xLocation, yLocation;
-	GetMousePosition(xLocation, yLocation);
+	bool isMouseInWindow = GetMousePosition(xLocation, yLocation);
+	
+	if (!isMouseInWindow)
+		return;
+	
 	FVector mouseWorldLocation;
 	FVector mouseWorldDirection;
 	this->DeprojectScreenPositionToWorld(xLocation, yLocation, mouseWorldLocation, mouseWorldDirection);
