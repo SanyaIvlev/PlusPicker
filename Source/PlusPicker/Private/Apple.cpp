@@ -15,13 +15,21 @@ AApple::AApple()
 void AApple::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void AApple::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	
+	FVector appleLocation = AppleMeshComponentPtr->GetComponentLocation();;
+	UE_LOG(LogTemp, Log, TEXT("Actor Location: %f"), appleLocation.Z);
+	
+	if (appleLocation.Z < KillAreaZ)
+	{
+		Destroy();
+		// TODO: game mode things
+	}
 
 }
 

@@ -19,11 +19,11 @@ void AAppleTree::BeginPlay()
 	
 	srand(time(0));
 	
-	_world = GetWorld();
-	_spawnParameters = new FActorSpawnParameters();
+	_worldPtr = GetWorld();
+	_spawnParametersPtr = new FActorSpawnParameters();
 	
 	FTimerHandle appleTimerHandle;
-	_world->GetTimerManager().SetTimer(
+	_worldPtr->GetTimerManager().SetTimer(
 		appleTimerHandle,
 		this,
 		&AAppleTree::DropApple,
@@ -33,7 +33,7 @@ void AAppleTree::BeginPlay()
 		);
 	
 	FTimerHandle rotationTimerHandle;
-	_world->GetTimerManager().SetTimer(
+	_worldPtr->GetTimerManager().SetTimer(
 		rotationTimerHandle,
 		this,
 		&AAppleTree::TryRotateRandomly,
@@ -84,7 +84,7 @@ void AAppleTree::DropApple() const
 {
 	FTransform actorTransform = GetActorTransform();
 	
-	_world->SpawnActor<AApple>(AppleClassToSpawn, actorTransform.GetLocation(), actorTransform.GetRotation().Rotator(), FActorSpawnParameters());
+	_worldPtr->SpawnActor<AApple>(AppleClassToSpawn, actorTransform.GetLocation(), actorTransform.GetRotation().Rotator(), FActorSpawnParameters());
 	
 	UE_LOG(LogTemp, Log, TEXT("DropApple"));
 }

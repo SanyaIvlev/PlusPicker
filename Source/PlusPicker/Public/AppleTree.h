@@ -41,8 +41,8 @@ protected:
 	virtual void BeginPlay() override;
 
 private:	
-	UWorld* _world;
-	FActorSpawnParameters* _spawnParameters;
+	UWorld* _worldPtr;
+	FActorSpawnParameters* _spawnParametersPtr;
 	
 	void TryRotateOnEdge();
 	void TryRotateRandomly();
