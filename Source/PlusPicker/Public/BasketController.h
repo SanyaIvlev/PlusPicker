@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "BasketController.generated.h"
 
+class ABasket;
 /**
  * 
  */
@@ -15,8 +16,13 @@ class PLUSPICKER_API ABasketController : public APlayerController
 	GENERATED_BODY()
 	
 protected:
-	// virtual void BeginPlay() override;
-	//
-	// virtual void SetupInputComponent() override;
+	virtual void BeginPlay() override;
+	
+	
+private:
+	 UPROPERTY()
+	 ABasket* BasketPawn;
+	
+	 virtual void Tick(float DeltaTime) override;
 	
 };

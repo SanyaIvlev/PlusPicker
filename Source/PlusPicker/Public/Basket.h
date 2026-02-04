@@ -14,6 +14,9 @@ class PLUSPICKER_API ABasket : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABasket();
+	
+	
+	void Move(FVector);
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Basket") 
@@ -28,8 +31,6 @@ protected:
 	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-	
-	void Move(FVector);
 
 public:	
 	// Called every frame
