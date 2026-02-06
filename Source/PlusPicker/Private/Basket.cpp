@@ -3,6 +3,9 @@
 
 #include "Basket.h"
 
+#include "ApplePickerGameState.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 ABasket::ABasket()
 {
@@ -15,7 +18,9 @@ ABasket::ABasket()
 void ABasket::BeginPlay()
 {
 	Super::BeginPlay();
-	// TODO: GameState
+	
+	AGameStateBase* gameState = UGameplayStatics::GetGameState(this);
+	ApplePickerGameStatePtr = Cast<AApplePickerGameState>(gameState);
 }
 
 // Called every frame
@@ -42,7 +47,9 @@ void ABasket::NotifyActorBeginOverlap(AActor* OtherActor)
 	Super::NotifyActorBeginOverlap(OtherActor);
 	
 	OtherActor->Destroy();
-	// update game score;
+	
+	ApplePickerGameStatePtr->UpdateGameScore();
+	
 }
 
 void ABasket::DestroyMesh(UStaticMeshComponent* MeshPtr)

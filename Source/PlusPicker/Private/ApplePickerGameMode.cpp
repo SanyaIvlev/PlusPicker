@@ -4,17 +4,14 @@
 #include "ApplePickerGameMode.h"
 #include "ApplePickerGameState.h"
 #include "Basket.h"
-#include "BasketController.h"
 #include "Kismet/GameplayStatics.h"
 
 // AApplePickerGameMode::AApplePickerGameMode()
 // {
 // 	DefaultPawnClass = ABasket::StaticClass();
 //
-// 	// 2. Устанавливаем класс контроллера (PlayerController)
 // 	PlayerControllerClass = ABasketController::StaticClass();
 //
-// 	// 3. Устанавливаем класс состояния игры (GameState)
 // 	GameStateClass = AApplePickerGameState::StaticClass();
 // }
 
@@ -22,6 +19,8 @@
 
 void AApplePickerGameMode::BeginPlay()
 {
+	Super::BeginPlay();
+	
 	APawn* pawnPtr = UGameplayStatics::GetPlayerPawn(this, 0); // !
 	BasketPtr = Cast<ABasket>(pawnPtr);
 	
@@ -43,8 +42,9 @@ void AApplePickerGameMode::OnAppleDestroyed() const
 		
 		if (!LevelToOpen.IsNull())
 		{
-			UGameplayStatics::OpenLevelBySoftObjectPtr(GetWorld(), LevelToOpen, true);
+			ApplePickerGameStatePtr->SaveHighScore();
 			
+			UGameplayStatics::OpenLevelBySoftObjectPtr(GetWorld(), LevelToOpen, true);
 		}
 	}
 }

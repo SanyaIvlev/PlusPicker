@@ -6,10 +6,15 @@
 #include "GameFramework/GameStateBase.h"
 #include "ApplePickerGameState.generated.h"
 
+class UApplePickerSaveGame;
 class ABasket;
 /**
  * 
  */
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FScoreUpdate, int32, NewScore);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FHighScoreUpdate, int32, NewHighScore);
+
 UCLASS()
 class PLUSPICKER_API AApplePickerGameState : public AGameStateBase
 {
@@ -19,13 +24,36 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game State")
 	ABasket* BasketPtr;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game State")
+	int Score;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game State")
+	int HighScore;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FScoreUpdate OnScoreUpdated;
+	
+	UPROPERTY(BlueprintAssignable, Category = "Events")
+	FHighScoreUpdate OnHighScoreUpdated;
+	
+	
 	void HandleAppleMiss();
+	void UpdateGameScore();
+	void SaveHighScore() const;
 	
 protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game State")
+	UApplePickerSaveGame* SaveGame;
+	
+	UPROPERTY()
+	FString SaveSlotName = TEXT("HighScoreSaveGame");
+	
+	
 	virtual void BeginPlay() override;
+	void TryLoadHighScore();
 	
 private:
-	void DestroyExistingApples();
-	void RemoveBasket();
+	void DestroyExistingApples() const;
+	void RemoveBasket() const;
 	
 };

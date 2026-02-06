@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "Basket.generated.h"
 
+class AApplePickerGameState;
+
 UCLASS()
 class PLUSPICKER_API ABasket : public APawn
 {
@@ -23,12 +25,11 @@ public:
 
 protected:
 	
-	
-	// UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Basket") 
-	// UBoxComponent* BasketCollisionPtr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Basket")
+	AApplePickerGameState* ApplePickerGameStatePtr;
 	
 	UFUNCTION()
-	void NotifyActorBeginOverlap(AActor* OtherActor) override;
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 	
 	
 	// Called when the game starts or when spawned
