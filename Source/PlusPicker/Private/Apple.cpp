@@ -19,7 +19,7 @@ AApple::AApple()
 void AApple::BeginPlay()
 {
 	Super::BeginPlay();
-}
+}	
 
 // Called every frame
 void AApple::Tick(float DeltaTime)

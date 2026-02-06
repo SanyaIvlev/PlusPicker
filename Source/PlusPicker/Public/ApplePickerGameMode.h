@@ -19,7 +19,7 @@ class PLUSPICKER_API AApplePickerGameMode : public AGameModeBase
 public:
 	// AApplePickerGameMode();
 	
-	void OnAppleDestroyed();
+	void OnAppleDestroyed() const;
 	
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game Mode")

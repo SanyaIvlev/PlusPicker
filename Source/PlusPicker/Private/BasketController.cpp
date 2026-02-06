@@ -14,10 +14,6 @@ void ABasketController::BeginPlay()
 	SetShowMouseCursor(true);
 	// construct widget
 	
-	
-	BasketPawnPtr->Move(FVector(0,0,100));
-	BasketPawnPtr->SetActorRotation(FRotator(0,0,0));
-	
 } 
 
 void ABasketController::Tick(float DeltaTime)

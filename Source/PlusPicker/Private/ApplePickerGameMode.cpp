@@ -29,7 +29,7 @@ void AApplePickerGameMode::BeginPlay()
 	ApplePickerGameStatePtr = Cast<AApplePickerGameState>(gameStatePtr);
 }
 
-void AApplePickerGameMode::OnAppleDestroyed()
+void AApplePickerGameMode::OnAppleDestroyed() const
 {
 	ApplePickerGameStatePtr->HandleAppleMiss();
 	
@@ -43,9 +43,7 @@ void AApplePickerGameMode::OnAppleDestroyed()
 		
 		if (!LevelToOpen.IsNull())
 		{
-			// FName LevelName = FName(*FPackageName::ObjectPathToPackageName(LevelToOpen.ToString()));
-			// UGameplayStatics::OpenLevel(GetGameInstance(), LevelName, true);
-			//UGameplayStatics::OpenLevelBySoftObjectPtr(GetWorld(), LevelToOpen, true);
+			UGameplayStatics::OpenLevelBySoftObjectPtr(GetWorld(), LevelToOpen, true);
 			
 		}
 	}
