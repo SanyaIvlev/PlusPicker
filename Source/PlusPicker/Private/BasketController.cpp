@@ -4,6 +4,8 @@
 #include "BasketController.h"
 
 #include "Basket.h"
+#include "UScoreIndicatorWidget.h"
+#include "Blueprint/UserWidget.h"
 
 void ABasketController::BeginPlay()
 {
@@ -12,7 +14,9 @@ void ABasketController::BeginPlay()
 	BasketPawnPtr = pawn;
 	
 	SetShowMouseCursor(true);
-	// construct widget
+	
+	UScoreIndicatorWidget* createdWidget = CreateWidget<UScoreIndicatorWidget>(this, ScoreIndicatorWidgetClass);
+	createdWidget->AddToViewport();
 	
 } 
 

@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "BasketController.generated.h"
 
+class UScoreIndicatorWidget;
 class ABasket;
 /**
  * 
@@ -16,8 +17,10 @@ class PLUSPICKER_API ABasketController : public APlayerController
 	GENERATED_BODY()
 	
 protected:
-	virtual void BeginPlay() override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Basket")
+	TSubclassOf<UScoreIndicatorWidget> ScoreIndicatorWidgetClass;
 	
+	virtual void BeginPlay() override;
 	
 private:
 	 UPROPERTY()
