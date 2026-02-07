@@ -15,12 +15,6 @@ AApple::AApple()
 
 }
 
-// Called when the game starts or when spawned
-void AApple::BeginPlay()
-{
-	Super::BeginPlay();
-}	
-
 // Called every frame
 void AApple::Tick(float DeltaTime)
 {

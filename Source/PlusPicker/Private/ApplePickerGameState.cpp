@@ -18,7 +18,7 @@ void AApplePickerGameState::BeginPlay()
 	TryLoadHighScore();
 }
 
-void AApplePickerGameState::HandleAppleMiss()
+void AApplePickerGameState::HandleAppleMiss() const
 {
 	DestroyExistingApples();
 	RemoveBasket();

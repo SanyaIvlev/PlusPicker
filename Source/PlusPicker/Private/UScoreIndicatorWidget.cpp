@@ -20,7 +20,7 @@ void UScoreIndicatorWidget::NativeConstruct()
 	UpdateHighScore(ApplePickerGameStatePtr->HighScore);
 }
 
-void UScoreIndicatorWidget::UpdateHighScore(int newHighScore)
+void UScoreIndicatorWidget::UpdateHighScore(int newHighScore) 
 {
 	FText highScoreText = FText::AsNumber(newHighScore);
 	HighScoreTextBlockPtr->SetText(highScoreText);

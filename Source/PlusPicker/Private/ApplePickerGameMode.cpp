@@ -6,22 +6,11 @@
 #include "Basket.h"
 #include "Kismet/GameplayStatics.h"
 
-// AApplePickerGameMode::AApplePickerGameMode()
-// {
-// 	DefaultPawnClass = ABasket::StaticClass();
-//
-// 	PlayerControllerClass = ABasketController::StaticClass();
-//
-// 	GameStateClass = AApplePickerGameState::StaticClass();
-// }
-
-
-
 void AApplePickerGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	APawn* pawnPtr = UGameplayStatics::GetPlayerPawn(this, 0); // !
+	APawn* pawnPtr = UGameplayStatics::GetPlayerPawn(this, 0);
 	BasketPtr = Cast<ABasket>(pawnPtr);
 	
 	AGameStateBase* gameStatePtr = UGameplayStatics::GetGameState(this);
@@ -33,8 +22,6 @@ void AApplePickerGameMode::OnAppleDestroyed() const
 	ApplePickerGameStatePtr->HandleAppleMiss();
 	
 	bool isNoBasketsLeft = BasketPtr->BasketMeshesPtr.IsEmpty();
-	UE_LOG(LogTemp, Log, TEXT("Num of baskets: %d"), BasketPtr->BasketMeshesPtr.Num());
-	
 	
 	if (isNoBasketsLeft)
 	{

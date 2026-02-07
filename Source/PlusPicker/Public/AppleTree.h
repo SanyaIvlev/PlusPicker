@@ -40,10 +40,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-private:	
-	UPROPERTY()
-	UWorld* _worldPtr;
-	
+private:
 	void TryRotateOnEdge();
 	void TryRotateRandomly();
 	void DropApple() const;

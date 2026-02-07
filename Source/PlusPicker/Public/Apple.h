@@ -21,9 +21,6 @@ protected:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Apple | Disappear")
 	float KillAreaZ = -50;
-	
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 public:	
 	// Called every frame

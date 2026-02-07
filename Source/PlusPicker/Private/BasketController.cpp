@@ -17,7 +17,6 @@ void ABasketController::BeginPlay()
 	
 	UScoreIndicatorWidget* createdWidget = CreateWidget<UScoreIndicatorWidget>(this, ScoreIndicatorWidgetClass);
 	createdWidget->AddToViewport();
-	
 } 
 
 void ABasketController::Tick(float DeltaTime)

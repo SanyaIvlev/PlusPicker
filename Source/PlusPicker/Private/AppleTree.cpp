@@ -17,12 +17,13 @@ void AAppleTree::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	srand(time(0));
+	srand(time(nullptr));
 	
-	_worldPtr = GetWorld();
+	
+	UWorld* world = GetWorld();
 	
 	FTimerHandle appleTimerHandle;
-	_worldPtr->GetTimerManager().SetTimer(
+	world->GetTimerManager().SetTimer(
 		appleTimerHandle,
 		this,
 		&AAppleTree::DropApple,
@@ -32,7 +33,7 @@ void AAppleTree::BeginPlay()
 		);
 	
 	FTimerHandle rotationTimerHandle;
-	_worldPtr->GetTimerManager().SetTimer(
+	world->GetTimerManager().SetTimer(
 		rotationTimerHandle,
 		this,
 		&AAppleTree::TryRotateRandomly,
@@ -81,7 +82,8 @@ void AAppleTree::DropApple() const
 {
 	FTransform actorTransform = GetActorTransform();
 	
-	_worldPtr->SpawnActor<AApple>(AppleClassToSpawn, actorTransform.GetLocation(), actorTransform.GetRotation().Rotator(), FActorSpawnParameters());
+	UWorld* world = GetWorld();
+	world->SpawnActor<AApple>(AppleClassToSpawn, actorTransform.GetLocation(), actorTransform.GetRotation().Rotator(), FActorSpawnParameters());
 }
 
 void AAppleTree::Move(float deltaSeconds)

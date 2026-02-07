@@ -37,7 +37,7 @@ public:
 	FHighScoreUpdate OnHighScoreUpdated;
 	
 	
-	void HandleAppleMiss();
+	void HandleAppleMiss() const;
 	void UpdateGameScore();
 	void SaveHighScore() const;
 	

@@ -10,8 +10,7 @@
 ABasket::ABasket()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
-
+	PrimaryActorTick.bCanEverTick = false;
 }
 
 // Called when the game starts or when spawned
@@ -23,18 +22,10 @@ void ABasket::BeginPlay()
 	ApplePickerGameStatePtr = Cast<AApplePickerGameState>(gameState);
 }
 
-// Called every frame
-void ABasket::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
 // Called to bind functionality to input
 void ABasket::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
 void ABasket::Move(FVector newPosition)
@@ -49,7 +40,6 @@ void ABasket::NotifyActorBeginOverlap(AActor* OtherActor)
 	OtherActor->Destroy();
 	
 	ApplePickerGameStatePtr->UpdateGameScore();
-	
 }
 
 void ABasket::DestroyMesh(UStaticMeshComponent* MeshPtr)
