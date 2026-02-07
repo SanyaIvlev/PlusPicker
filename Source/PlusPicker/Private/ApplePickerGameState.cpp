@@ -12,7 +12,7 @@ void AApplePickerGameState::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	APawn* pawnPtr = UGameplayStatics::GetPlayerPawn(this, 0); // !
+	APawn* pawnPtr = UGameplayStatics::GetPlayerPawn(this, 0);
 	BasketPtr = Cast<ABasket>(pawnPtr);
 	
 	TryLoadHighScore();
@@ -57,6 +57,8 @@ void AApplePickerGameState::TryLoadHighScore()
 	{
 		USaveGame* createdSaveGame = UGameplayStatics::CreateSaveGameObject(UApplePickerSaveGame::StaticClass());
 		SaveGame = Cast<UApplePickerSaveGame>(createdSaveGame);
+		
+		UGameplayStatics::SaveGameToSlot(SaveGame, SaveSlotName, 0);
 	}
 	
 	UE_LOG(LogTemp, Log, TEXT("LOADED HIGH SCORE --> %d"), SaveGame->HighScore);

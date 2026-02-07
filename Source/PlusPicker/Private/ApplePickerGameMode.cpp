@@ -38,8 +38,6 @@ void AApplePickerGameMode::OnAppleDestroyed() const
 	
 	if (isNoBasketsLeft)
 	{
-		//save score
-		
 		if (!LevelToOpen.IsNull())
 		{
 			ApplePickerGameStatePtr->SaveHighScore();

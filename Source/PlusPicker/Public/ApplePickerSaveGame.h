@@ -15,5 +15,6 @@ class PLUSPICKER_API UApplePickerSaveGame : public USaveGame
 	GENERATED_BODY()
 	
 public:
-	int HighScore;
+	UPROPERTY(SaveGame)
+	int HighScore = 0;
 };
