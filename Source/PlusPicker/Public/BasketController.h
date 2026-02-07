@@ -17,7 +17,7 @@ class PLUSPICKER_API ABasketController : public APlayerController
 	GENERATED_BODY()
 	
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Basket")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Basket Controller | Widget Setup")
 	TSubclassOf<UScoreIndicatorWidget> ScoreIndicatorWidgetClass;
 	
 	virtual void BeginPlay() override;

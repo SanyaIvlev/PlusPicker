@@ -22,13 +22,13 @@ public:
 	void OnAppleDestroyed() const;
 	
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game Mode")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game Mode | Setup")
 	ABasket* BasketPtr;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game Mode")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game Mode | Setup")
 	AApplePickerGameState* ApplePickerGameStatePtr;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game Mode")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game Mode | Reload Level")
 	TSoftObjectPtr<UWorld> LevelToOpen;
 	
 	virtual void BeginPlay() override;

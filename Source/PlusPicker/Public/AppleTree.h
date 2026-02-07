@@ -18,23 +18,23 @@ public:
 	AAppleTree();
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree | Setup")
 	TSubclassOf<AApple> AppleClassToSpawn;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree | Movement")
 	float MovementVector = 600;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree | Movement")
 	float LeftAndRightEdge = 700;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree | Movement")
 	float ChanceToChangeDirection = 0.02;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
-	float AppleDropDelay = 0.6;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree | Movement")
 	float RandomRotationCheckDelay = 0.02;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="AppleTree | Apple Drop")
+	float AppleDropDelay = 0.6;
 	
 	
 	// Called when the game starts or when spawned

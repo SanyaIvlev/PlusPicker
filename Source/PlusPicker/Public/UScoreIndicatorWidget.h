@@ -23,15 +23,15 @@ public:
 	void UpdateHighScore(int newHighScore);
 	
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score Indicator")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score Indicator Widget | Text")
 	UTextBlock* ScoreTextBlockPtr;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score Indicator")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Score Indicator Widget | Text")
 	UTextBlock* HighScoreTextBlockPtr;
 	
 	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
 private:
-	UPROPERTY(VisibleAnywhere, Category = "Score Indicator")
+	UPROPERTY(VisibleAnywhere, Category = "Score Indicator Widget | Setup")
 	AApplePickerGameState* ApplePickerGameStatePtr;
 };

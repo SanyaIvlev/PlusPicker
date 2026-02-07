@@ -16,11 +16,11 @@ public:
 	AApple();
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Apple")
-	float KillAreaZ = -50;
-	
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Apple")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category="Apple | Setup")
 	UStaticMeshComponent* AppleMeshComponentPtr;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Apple | Disappear")
+	float KillAreaZ = -50;
 	
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

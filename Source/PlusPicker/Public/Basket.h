@@ -14,7 +14,7 @@ class PLUSPICKER_API ABasket : public APawn
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Basket") 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Basket | Setup") 
 	TArray<UStaticMeshComponent*> BasketMeshesPtr;
 	
 	
@@ -25,7 +25,7 @@ public:
 
 protected:
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Basket")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Basket | Setup")
 	AApplePickerGameState* ApplePickerGameStatePtr;
 	
 	UFUNCTION()

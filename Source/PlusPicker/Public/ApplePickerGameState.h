@@ -21,19 +21,19 @@ class PLUSPICKER_API AApplePickerGameState : public AGameStateBase
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game State")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game State | Setup")
 	ABasket* BasketPtr;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game State")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game State | Score")
 	int Score;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game State")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Apple Picker Game State | Score")
 	int HighScore;
 	
-	UPROPERTY(BlueprintAssignable, Category = "Events")
+	UPROPERTY(BlueprintAssignable, Category = "Apple Picker Game State | Events")
 	FScoreUpdate OnScoreUpdated;
 	
-	UPROPERTY(BlueprintAssignable, Category = "Events")
+	UPROPERTY(BlueprintAssignable, Category = "Apple Picker Game State | Events")
 	FHighScoreUpdate OnHighScoreUpdated;
 	
 	
@@ -42,7 +42,7 @@ public:
 	void SaveHighScore() const;
 	
 protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game State")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Apple Picker Game State | Setup")
 	UApplePickerSaveGame* SaveGame;
 	
 	UPROPERTY()
